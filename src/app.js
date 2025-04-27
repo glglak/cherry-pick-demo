@@ -1,6 +1,6 @@
 // Main application file
 
-const appVersion = '1.0.0';
+const appVersion = '1.0.1'; // Version updated for bug fix
 
 // Core functionality
 function initializeApp() {
@@ -13,6 +13,11 @@ function initializeApp() {
 
 // Feature: User management
 function createUser(username, email) {
+  // Bug fix: Added validation to prevent null usernames
+  if (!username || !email) {
+    throw new Error('Username and email are required');
+  }
+  
   return {
     id: Math.floor(Math.random() * 1000),
     username,
